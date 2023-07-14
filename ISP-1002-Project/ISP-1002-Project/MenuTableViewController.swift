@@ -8,15 +8,27 @@
 import UIKit
 
 class MenuTableViewController: UITableViewController {
-
+    
+    var menuItems: [MenuItem] = [] // Declare the menuItems array
+   
+    @IBAction func callWaiterButton(_ sender: Any) {
+        let alert = UIAlertController(title: nil, message: "A waiter will be with you in a moment.", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alert.addAction(okayAction)
+        present(alert, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // Populate the menuItems array with your menu item data
+               let menuItem1 = MenuItem(itemID: 1, title: "Item 1", description: "Description 1")
+               let menuItem2 = MenuItem(itemID: 2, title: "Item 2", description: "Description 2")
+               let menuItem3 = MenuItem(itemID: 3, title: "Item 3", description: "Description 3")
+                
+                menuItems = [menuItem1, menuItem2, menuItem3]
+                
+        // Reload the table view after populating the menuItems array
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -31,15 +43,18 @@ class MenuTableViewController: UITableViewController {
         return 0
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuItemCell", for: indexPath) as! MenuItemCell
+        let menuItem = menuItems[indexPath.row]
+        
+        // Configure the cell with the menu item data
+               cell.titleLabel.text = menuItem.title
+               cell.descriptionLabel.text = menuItem.description
+               
         return cell
     }
-    */
+
+    
 
     /*
     // Override to support conditional editing of the table view.
