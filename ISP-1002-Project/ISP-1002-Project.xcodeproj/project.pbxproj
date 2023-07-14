@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B17CDAC62A61925C00635B2D /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17CDAC52A61925C00635B2D /* MenuTableViewController.swift */; };
 		B186C6412A4E0C900098144B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B186C6402A4E0C900098144B /* AppDelegate.swift */; };
 		B186C6432A4E0C900098144B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B186C6422A4E0C900098144B /* SceneDelegate.swift */; };
 		B186C6452A4E0C900098144B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B186C6442A4E0C900098144B /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B17CDAC52A61925C00635B2D /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		B186C63D2A4E0C900098144B /* ISP-1002-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ISP-1002-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B186C6402A4E0C900098144B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B186C6422A4E0C900098144B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				B186C6422A4E0C900098144B /* SceneDelegate.swift */,
 				B186C6442A4E0C900098144B /* ViewController.swift */,
 				B186C6462A4E0C900098144B /* Main.storyboard */,
+				B17CDAC52A61925C00635B2D /* MenuTableViewController.swift */,
 				B186C6492A4E0C970098144B /* Assets.xcassets */,
 				B186C64B2A4E0C970098144B /* LaunchScreen.storyboard */,
 				B186C64E2A4E0C970098144B /* Info.plist */,
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B186C6642A4E12CC0098144B /* Order.swift in Sources */,
+				B17CDAC62A61925C00635B2D /* MenuTableViewController.swift in Sources */,
 				B186C6452A4E0C900098144B /* ViewController.swift in Sources */,
 				B186C6602A4E12620098144B /* MenuItem.swift in Sources */,
 				B186C6412A4E0C900098144B /* AppDelegate.swift in Sources */,
