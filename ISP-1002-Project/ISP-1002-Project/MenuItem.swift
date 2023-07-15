@@ -11,10 +11,16 @@ class MenuItem {
     let itemID: Int
     let title: String
     let description: String
+    let price: Double
+    let image: String
     
-    init(itemID: Int, title: String, description: String) {
+    init(itemID: Int, title: String, description: String, price: Double, image: String) {
         self.itemID = itemID
         self.title = title
         self.description = description
+        self.price = price
+        self.image = image
     }
+    
+    
 }
