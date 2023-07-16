@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var table: UITableView!
     
     var menuItems: [MenuItem] = []
@@ -15,12 +15,35 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let menuItem1 = MenuItem(itemID: 1, title: "Burger", description: "Delicious beef burger", price: 10.99, image: "burger")
-        let menuItem2 = MenuItem(itemID: 2, title: "Pizza", description: "Freshly baked pizza with assorted toppings", price: 12.99, image: "pizza")
+        let menuItem1 = MenuItem(itemID: 1, title: "Burger", description: "Delicious beef burger", image: "burger")
+        let menuItem2 = MenuItem(itemID: 2, title: "Pizza", description: "Freshly baked pizza with assorted toppings", image: "pizza")
+        let menuItem3 = MenuItem(itemID: 2, title: "Fried Chicken", description: "Crispy, flavorful fried chicken.", image: "chicken")
+        let menuItem4 = MenuItem(itemID: 2, title: "Sushi", description: "Exquisite sushi creations", image: "sushi")
+        menuItems = [menuItem1, menuItem2, menuItem3, menuItem4]
         
-        menuItems = [menuItem1, menuItem2]
+        table.dataSource = self
+        table.delegate = self
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuItems.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuItemCell", for: indexPath) as! MenuItemCell
+        let menuItem = menuItems[indexPath.row]
         
-        // Do any additional setup after loading the view.
+        cell.titleLabel.text = menuItem.title
+        cell.descriptionLabel.text = menuItem.description
+        cell.itemImageView.image = UIImage(named: menuItem.image)
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 140
     }
 }
 
