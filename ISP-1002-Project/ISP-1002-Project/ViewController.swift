@@ -47,7 +47,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let selectedItem = menuItems[indexPath.row]
             
-            performSegue(withIdentifier: "ItemSegue", sender: selectedItem)
         }
         
         // MARK: - Navigation
