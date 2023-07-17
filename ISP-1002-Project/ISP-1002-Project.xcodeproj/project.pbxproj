@@ -17,6 +17,7 @@
 		B186C6602A4E12620098144B /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B186C65F2A4E12620098144B /* MenuItem.swift */; };
 		B186C6622A4E128E0098144B /* Orders.swift in Sources */ = {isa = PBXBuildFile; fileRef = B186C6612A4E128D0098144B /* Orders.swift */; };
 		B186C6642A4E12CC0098144B /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = B186C6632A4E12CC0098144B /* Order.swift */; };
+		B18BC4E42A64A54600909A45 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18BC4E32A64A54600909A45 /* ItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B186C65F2A4E12620098144B /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		B186C6612A4E128D0098144B /* Orders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orders.swift; sourceTree = "<group>"; };
 		B186C6632A4E12CC0098144B /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		B18BC4E32A64A54600909A45 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				B186C6402A4E0C900098144B /* AppDelegate.swift */,
 				B186C6422A4E0C900098144B /* SceneDelegate.swift */,
 				B186C6462A4E0C900098144B /* Main.storyboard */,
+				B18BC4E32A64A54600909A45 /* ItemViewController.swift */,
 				B17AEE462A62DE310008E5FE /* ViewController.swift */,
 				B186C6492A4E0C970098144B /* Assets.xcassets */,
 				B186C64B2A4E0C970098144B /* LaunchScreen.storyboard */,
@@ -151,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B186C6642A4E12CC0098144B /* Order.swift in Sources */,
+				B18BC4E42A64A54600909A45 /* ItemViewController.swift in Sources */,
 				B186C6602A4E12620098144B /* MenuItem.swift in Sources */,
 				B186C6412A4E0C900098144B /* AppDelegate.swift in Sources */,
 				B11F0F952A61AC0B007CFF04 /* MenuItemCell.swift in Sources */,

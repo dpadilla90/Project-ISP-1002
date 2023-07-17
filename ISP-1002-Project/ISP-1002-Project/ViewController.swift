@@ -43,6 +43,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let selectedItem = menuItems[indexPath.row]
+            
+            performSegue(withIdentifier: "ItemSegue", sender: selectedItem)
+        }
+        
+        // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == "ItemSegue",
+              let navigationController = segue.destination as? UINavigationController,
+              let itemViewController = navigationController.topViewController as? ItemViewController,
+              let selectedItem = sender as? MenuItem {
+               itemViewController.selectedItem = selectedItem
+               itemViewController.selectedItemTitle = selectedItem.title
+           }
+       }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 100
