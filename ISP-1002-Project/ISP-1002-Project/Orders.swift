@@ -12,6 +12,8 @@ class Orders {
     
     func addOrder(order: Order) {
         orderList.append(order)
+        print("Order added: \(order)")
+
     }
     
     func deleteOrder(order: Order) {

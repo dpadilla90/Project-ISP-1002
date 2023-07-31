@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--All You Can Eat Menu-->
+        <!--View Controller-->
         <scene sceneID="tHT-qk-gdz">
             <objects>
-                <viewController id="PTI-xt-LFk" customClass="ViewController" customModule="ISP_1002_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PTI-xt-LFk" userLabel="View Controller" customClass="ViewController" customModule="ISP_1002_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fdm-6G-ujr">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,9 +125,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SL1-m6-BbN">
-                                <rect key="frame" x="0.0" y="103.00000000000001" width="393" height="154.33333333333337"/>
+                                <rect key="frame" x="0.0" y="103.00000000000001" width="393" height="175.33333333333337"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jum-Fo-3GT">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jum-Fo-3GT">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="cam-2o-cON"/>
@@ -171,8 +171,17 @@
                                             <constraint firstAttribute="bottom" secondItem="JL6-M7-ZmZ" secondAttribute="bottom" id="wx9-0p-T6M"/>
                                         </constraints>
                                     </stackView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Special Instructions" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vXV-Fc-VCn">
-                                        <rect key="frame" x="0.0" y="60" width="393" height="60"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special Instructions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxc-if-Uan">
+                                        <rect key="frame" x="0.0" y="60" width="393" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="mGX-zr-lSt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vXV-Fc-VCn">
+                                        <rect key="frame" x="0.0" y="81" width="393" height="60"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="vcU-4f-JRd"/>
@@ -182,17 +191,20 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Isg-n8-bBk">
-                                        <rect key="frame" x="0.0" y="119.99999999999999" width="393" height="34.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="141" width="393" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Add To Order"/>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="bxc-if-Uan" secondAttribute="trailing" id="8Cp-ws-xd1"/>
                                     <constraint firstItem="jum-Fo-3GT" firstAttribute="leading" secondItem="SL1-m6-BbN" secondAttribute="leading" id="CLY-M4-Dij"/>
-                                    <constraint firstItem="vXV-Fc-VCn" firstAttribute="top" secondItem="GQZ-Ze-Ulf" secondAttribute="bottom" id="Hux-fY-GlI"/>
+                                    <constraint firstItem="vXV-Fc-VCn" firstAttribute="top" secondItem="bxc-if-Uan" secondAttribute="bottom" id="W5m-hE-v14"/>
                                     <constraint firstItem="vXV-Fc-VCn" firstAttribute="leading" secondItem="SL1-m6-BbN" secondAttribute="leading" id="rOP-cD-csr"/>
                                     <constraint firstAttribute="trailing" secondItem="jum-Fo-3GT" secondAttribute="trailing" id="t5L-eY-ZW0"/>
                                     <constraint firstAttribute="trailing" secondItem="vXV-Fc-VCn" secondAttribute="trailing" id="vC8-Rc-m4w"/>
+                                    <constraint firstItem="bxc-if-Uan" firstAttribute="top" secondItem="GQZ-Ze-Ulf" secondAttribute="bottom" id="w2Q-A3-2oU"/>
+                                    <constraint firstItem="bxc-if-Uan" firstAttribute="leading" secondItem="SL1-m6-BbN" secondAttribute="leading" id="xWp-Kt-Peh"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -204,7 +216,6 @@
                             <constraint firstItem="SL1-m6-BbN" firstAttribute="leading" secondItem="54Q-WQ-tKO" secondAttribute="leading" id="vyp-Py-DVp"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="KAp-4y-Fyr"/>
                     <connections>
                         <outlet property="addToOrderButton" destination="Isg-n8-bBk" id="feB-Vx-4VV"/>
                         <outlet property="quantityLabel" destination="cfR-Ju-Try" id="nSG-Xi-Bqc"/>
@@ -214,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9uz-wh-K2j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1944.2748091603053" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="912" y="-54"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="s5B-V8-dph">

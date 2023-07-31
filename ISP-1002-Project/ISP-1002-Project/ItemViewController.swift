@@ -60,6 +60,7 @@ class ItemViewController: UIViewController {
     }
     
     @objc func addToOrderButtonTapped() {
+        print("add to order method called")
         guard let selectedItem = selectedItem else {
                // Handle the case when no item is selected
                return
@@ -68,16 +69,23 @@ class ItemViewController: UIViewController {
         let instructions = specialInstructionsTextView.text ?? ""
         
         // Perform actions to add the item to the order using the quantity and instructions
-        // You can access the data model or call appropriate methods to handle the order
         
         let order = Order(menuItem: selectedItem, quantity: selectedQuantity, specialInstructions: instructions)
            orders.addOrder(order: order)
-
+        
+        // Check if the order was created successfully
+          if let lastOrder = orders.orderList.last {
+              print("Order created successfully:")
+              print("Menu Item: \(lastOrder.menuItem.title)")
+              print("Quantity: \(lastOrder.quantity)")
+              print("Special Instructions: \(lastOrder.specialInstructions)")
+          } else {
+              print("Failed to create the order.")
+          }
         
         // Perform any necessary navigation or UI updates after adding the item to the order
     }
-    
-    // Rest of your implementation
+   
 }
 
 
