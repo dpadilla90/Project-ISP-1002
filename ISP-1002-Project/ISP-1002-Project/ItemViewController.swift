@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol ItemViewControllerDelegate: AnyObject {
+    func addToOrderButtonTapped()
+}
+
 class ItemViewController: UIViewController {
     
     let orders = Orders()
+    weak var delegate: ItemViewControllerDelegate?
 
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var stepper: UIStepper!
@@ -60,7 +65,7 @@ class ItemViewController: UIViewController {
     }
     
     @objc func addToOrderButtonTapped() {
-        print("add to order method called")
+       
         guard let selectedItem = selectedItem else {
                // Handle the case when no item is selected
                return
@@ -83,7 +88,11 @@ class ItemViewController: UIViewController {
               print("Failed to create the order.")
           }
         
-        // Perform any necessary navigation or UI updates after adding the item to the order
+        // Inform the delegate (MenuTableViewController) that the addToOrderButton is tapped
+        delegate?.addToOrderButtonTapped()
+        
+        // Perform the unwind segue to return to the MenuTableViewController
+        performSegue(withIdentifier: "unwindToMenuTableViewController", sender: self)
     }
    
 }

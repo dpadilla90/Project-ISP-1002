@@ -203,9 +203,11 @@
                         <outlet property="quantityLabel" destination="cfR-Ju-Try" id="nSG-Xi-Bqc"/>
                         <outlet property="specialInstructionsTextView" destination="vXV-Fc-VCn" id="Qkv-NE-kIT"/>
                         <outlet property="stepper" destination="JL6-M7-ZmZ" id="exI-v7-kfK"/>
+                        <segue destination="GPo-7Q-8f2" kind="unwind" identifier="unwindToMenuTableViewController" unwindAction="unwindToMenuTableViewControllerWithSegue:" id="kS5-Mr-cM8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9uz-wh-K2j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="GPo-7Q-8f2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3637.4045801526718" y="-32.394366197183103"/>
         </scene>
