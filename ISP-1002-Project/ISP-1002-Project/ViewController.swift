@@ -38,8 +38,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuItemCell", for: indexPath) as! MenuItemCell
         let menuItem = menuItems[indexPath.row]
         
-        cell.titleLabel.text = menuItem.title
-        cell.descriptionLabel.text = menuItem.description
+        cell.titleTextView.text = menuItem.title
+        cell.descriptionTextView.text = menuItem.description
         cell.itemImageView.image = UIImage(named: menuItem.image)
     
         return cell
@@ -50,15 +50,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-           if segue.identifier == "ItemSegue",
-              let navigationController = segue.destination as? UINavigationController,
-              let itemViewController = navigationController.topViewController as? ItemViewController,
-              let indexPath = tableView.indexPathForSelectedRow,
-              let selectedItem = menuItems[indexPath.row]{
-               itemViewController.selectedItem = selectedItem
-               itemViewController.selectedItemTitle = selectedItem.title
+               if segue.identifier == "ItemSegue",
+                  let navigationController = segue.destination as? UINavigationController,
+                  let itemViewController = navigationController.topViewController as? ItemViewController,
+                  let indexPath = table.indexPathForSelectedRow{
+                   let selectedItem = menuItems[indexPath.row]
+                   itemViewController.selectedItem = selectedItem
+                   print("Selected item: \(selectedItem)") // Check if the selected item is correct
+                   itemViewController.selectedItemTitle = selectedItem.title
+                   print("Selected item title: \(itemViewController.selectedItemTitle)") // Check if the selected item title is set correctly
+
+               }
            }
-       }
 //
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         

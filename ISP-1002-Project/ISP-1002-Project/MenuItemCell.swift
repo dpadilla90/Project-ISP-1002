@@ -7,8 +7,8 @@
 import UIKit
 
 class MenuItemCell: UITableViewCell {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var titleTextView: UITextView!
+    @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var itemImageView: UIImageView!
     
 }
