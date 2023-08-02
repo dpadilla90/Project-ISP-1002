@@ -8,9 +8,12 @@
 import UIKit
 
 class MenuTableViewController: UITableViewController, ItemViewControllerDelegate {
+ 
 
     var menuItems: [MenuItem] = []
-    var orders = Orders()
+    var orders = Orders.shared
+    var order: Order?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,19 +51,21 @@ class MenuTableViewController: UITableViewController, ItemViewControllerDelegate
    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-           if segue.identifier == "ItemSegue", let indexPath = tableView.indexPathForSelectedRow {
-               // Get the selected title from your data source (e.g., an array)
-               let selectedItem = menuItems[indexPath.row]
+            if segue.identifier == "ItemSegue", let indexPath = tableView.indexPathForSelectedRow {
+                let selectedItem = menuItems[indexPath.row]
 
-               // Get the destination ItemViewController
-               if let destinationVC = segue.destination as? ItemViewController {
-                   // Pass the selected title to the ItemViewController
-                   destinationVC.selectedItem = selectedItem
-                   destinationVC.selectedItemTitle = selectedItem.title
-                   destinationVC.delegate = self // Set the delegate to MenuTableViewController
-               }
-           }
-       }
+                if let destinationVC = segue.destination as? ItemViewController {
+                    destinationVC.selectedItem = selectedItem
+                    destinationVC.selectedItemTitle = selectedItem.title
+                    destinationVC.delegate = self
+                }
+            }
+            if segue.identifier == "ViewOrderSegue" {
+                if let orderTableViewController = segue.destination as? OrderTableViewController {
+                    orderTableViewController.order = orders.orderList.last
+                }
+            }
+        }
         
      
 
@@ -98,15 +103,29 @@ class MenuTableViewController: UITableViewController, ItemViewControllerDelegate
        }
 
        // Action for the ViewOrder button
-       @objc func viewOrderButtonTapped() {
-           // Perform a segue to the scene where you can view the order
-           performSegue(withIdentifier: "ViewOrderSegue", sender: self)
+    @objc func viewOrderButtonTapped() {
+           // Get the last order added to the list
+           if let lastOrder = orders.orderList.last {
+               // Assign the last order to the order property of the OrderTableViewController
+               if let orderTableViewController = storyboard?.instantiateViewController(withIdentifier: "OrderTableViewController") as? OrderTableViewController {
+                   orderTableViewController.order = lastOrder
+                   print("Order trasnfered successfully:")
+                   print("Menu Item: \(lastOrder.menuItem.title)")
+                   print("Quantity: \(lastOrder.quantity)")
+
+                   // Present the OrderTableViewController using navigation controller
+                  navigationController?.pushViewController(orderTableViewController, animated: true)
+               }
+           } else {
+               // Handle the case when there are no orders
+               print("No orders to display.")
+           }
        }
     
-        func addToOrderButtonTapped() {
+    func addToOrderButtonTapped() {
                showViewOrderButton()
            }
-        
+   
     @IBAction func unwindToMenuTableViewController(segue: UIStoryboardSegue) {
            // This is the unwind method that will be called when returning from ItemViewController.
            // Any necessary actions after returning from ItemViewController can be placed here.

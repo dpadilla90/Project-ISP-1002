@@ -13,8 +13,9 @@ protocol ItemViewControllerDelegate: AnyObject {
 
 class ItemViewController: UIViewController {
     
-    let orders = Orders()
+    let orders = Orders.shared
     weak var delegate: ItemViewControllerDelegate?
+    var order: Order?
 
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var stepper: UIStepper!
@@ -90,6 +91,7 @@ class ItemViewController: UIViewController {
         
         // Inform the delegate (MenuTableViewController) that the addToOrderButton is tapped
         delegate?.addToOrderButtonTapped()
+    
         
         // Perform the unwind segue to return to the MenuTableViewController
         performSegue(withIdentifier: "unwindToMenuTableViewController", sender: self)

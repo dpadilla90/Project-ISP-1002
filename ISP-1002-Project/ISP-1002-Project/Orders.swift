@@ -8,8 +8,10 @@
 import Foundation
 // Orders class
 class Orders {
-    var orderList: [Order] = []
+    static let shared = Orders() // Singleton instance
     
+    var orderList: [Order] = []
+    private init() {}
     func addOrder(order: Order) {
         orderList.append(order)
         print("Order added: \(order)")

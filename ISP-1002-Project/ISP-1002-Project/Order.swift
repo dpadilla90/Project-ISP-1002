@@ -12,6 +12,9 @@ class Order: Equatable {
     var quantity: Int
     var specialInstructions: String
     
+    // Add an array property to hold the list of order items
+    var items: [OrderItem] = []
+    
     init(menuItem: MenuItem, quantity: Int, specialInstructions: String) {
         self.menuItem = menuItem
         self.quantity = quantity
