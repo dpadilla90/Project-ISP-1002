@@ -52,8 +52,7 @@ class ItemViewController: UIViewController {
         specialInstructionsTextView.textColor = UIColor.lightGray
         specialInstructionsTextView.delegate = self
         
-        // Add action for the "Add to Order" button
-        addToOrderButton.addTarget(self, action: #selector(addToOrderButtonTapped), for: .touchUpInside)
+       
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
@@ -65,8 +64,7 @@ class ItemViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc func addToOrderButtonTapped() {
-       
+    @IBAction func addToOderButton(_ sender: Any) {
         guard let selectedItem = selectedItem else {
                // Handle the case when no item is selected
                return
@@ -90,12 +88,12 @@ class ItemViewController: UIViewController {
           }
         
         // Inform the delegate (MenuTableViewController) that the addToOrderButton is tapped
-        delegate?.addToOrderButtonTapped()
-    
+            delegate?.addToOrderButtonTapped()
         
         // Perform the unwind segue to return to the MenuTableViewController
         performSegue(withIdentifier: "unwindToMenuTableViewController", sender: self)
     }
+   
    
 }
 

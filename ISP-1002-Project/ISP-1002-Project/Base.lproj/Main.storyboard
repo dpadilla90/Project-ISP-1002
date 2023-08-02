@@ -61,6 +61,10 @@
                                         <constraint firstAttribute="bottom" secondItem="PAB-y0-i0x" secondAttribute="bottom" id="t2i-Bx-UNH"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="quantityLabel" destination="Kyp-8e-Wvs" id="O5h-OT-q5o"/>
+                                    <outlet property="titleLabel" destination="QUg-LI-CpM" id="kGi-XP-4l1"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -164,6 +168,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="viewOrderButton" destination="XFE-cb-qLH" id="xip-S8-K3C"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="meO-py-5z5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -247,6 +254,9 @@
                                         <rect key="frame" x="0.0" y="141" width="393" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Add To Order"/>
+                                        <connections>
+                                            <action selector="addToOderButton:" destination="TVJ-7Q-5V2" eventType="touchUpInside" id="in6-7H-xMZ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

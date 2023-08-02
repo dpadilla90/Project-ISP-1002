@@ -8,8 +8,10 @@
 import UIKit
 
 class MenuTableViewController: UITableViewController, ItemViewControllerDelegate {
+  
  
-
+    @IBOutlet weak var viewOrderButton: UIBarButtonItem!
+    
     var menuItems: [MenuItem] = []
     var orders = Orders.shared
     var order: Order?
@@ -17,9 +19,9 @@ class MenuTableViewController: UITableViewController, ItemViewControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewOrderButton.isHidden = true
         
-        // Hide the ViewOrder button initially
-                navigationItem.rightBarButtonItem = nil
+        
         
         let menuItem1 = MenuItem(itemID: 1, title: "Burger", description: "Delicious beef burger", image: "burger")
         let menuItem2 = MenuItem(itemID: 2, title: "Pizza", description: "Freshly baked pizza with assorted toppings", image: "pizza")
@@ -91,39 +93,9 @@ class MenuTableViewController: UITableViewController, ItemViewControllerDelegate
         return 40
     }
 
-    // Function to show the ViewOrder button
-       func showViewOrderButton() {
-           let viewOrderButton = UIBarButtonItem(title: "View Order", style: .plain, target: self, action: #selector(viewOrderButtonTapped))
-           navigationItem.rightBarButtonItem = viewOrderButton
-       }
-
-       // Function to hide the ViewOrder button
-       func hideViewOrderButton() {
-           navigationItem.rightBarButtonItem = nil
-       }
-
-       // Action for the ViewOrder button
-    @objc func viewOrderButtonTapped() {
-           // Get the last order added to the list
-           if let lastOrder = orders.orderList.last {
-               // Assign the last order to the order property of the OrderTableViewController
-               if let orderTableViewController = storyboard?.instantiateViewController(withIdentifier: "OrderTableViewController") as? OrderTableViewController {
-                   orderTableViewController.order = lastOrder
-                   print("Order trasnfered successfully:")
-                   print("Menu Item: \(lastOrder.menuItem.title)")
-                   print("Quantity: \(lastOrder.quantity)")
-
-                   // Present the OrderTableViewController using navigation controller
-                  navigationController?.pushViewController(orderTableViewController, animated: true)
-               }
-           } else {
-               // Handle the case when there are no orders
-               print("No orders to display.")
-           }
-       }
     
     func addToOrderButtonTapped() {
-               showViewOrderButton()
+        viewOrderButton.isHidden = false
            }
    
     @IBAction func unwindToMenuTableViewController(segue: UIStoryboardSegue) {
