@@ -7,12 +7,21 @@
 import UIKit
 
 class OrderTableViewController: UITableViewController {
-    var orders = Orders.shared
     var order: Order?
+    var orders: [Order] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Check if the order was created successfully
+        if let lastOrder = order {
+              print("Order recieved successfully:")
+              print("Menu Item: \(lastOrder.menuItem.title)")
+              print("Quantity: \(lastOrder.quantity)")
+              print("Special Instructions: \(lastOrder.specialInstructions)")
+          } else {
+              print("Failed to create the order.")
+          }
         // Register the custom cell class for reuse
         tableView.register(OrderItemCell.self, forCellReuseIdentifier: "OrderItemCell")
     }
@@ -21,18 +30,18 @@ class OrderTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of items in the order
-        return order?.items.count ?? 0
+        return orders.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Configure the table view cell to display the item details
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderItemCell", for: indexPath) as! OrderItemCell
-        if let item = order?.items[indexPath.row] {
+            let item = orders[indexPath.row]
             // Configure the cell with the item details (e.g., item title, quantity, etc.)
-            cell.titleLabel.text = item.title
-            cell.quantityLabel.text = "Quantity: \(item.quantity)"
-            // Configure other custom cell properties as needed
-        }
+            cell.titleLabel?.text = item.menuItem.title
+            cell.quantityLabel?.text = "Quantity: \(item.quantity)"
+            
+        
         return cell
     }
     

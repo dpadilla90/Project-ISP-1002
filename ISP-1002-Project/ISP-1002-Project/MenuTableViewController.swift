@@ -65,6 +65,7 @@ class MenuTableViewController: UITableViewController, ItemViewControllerDelegate
             if segue.identifier == "ViewOrderSegue" {
                 if let orderTableViewController = segue.destination as? OrderTableViewController {
                     orderTableViewController.order = orders.orderList.last
+                    orderTableViewController.orders = orders.orderList
                 }
             }
         }
