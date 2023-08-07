@@ -13,17 +13,27 @@ class OrderTableViewController: UITableViewController {
         sender.title = (self.tableView.isEditing) ? "Done" : "Edit"
     }
  
-    
+   
     var order: Order?
 
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = self.editButtonItem
         print("Order items count: \(order?.items.count ?? 0)")
         
     }
-    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        if editing {
+            self.editButtonItem.title = "Done"
+        } else {
+            self.editButtonItem.title = "Edit"
+        }
+    }
+
     // MARK: - UITableViewDataSource methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

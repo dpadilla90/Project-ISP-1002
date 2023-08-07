@@ -24,10 +24,10 @@ class MenuTableViewController: UITableViewController, ItemViewControllerDelegate
         
         
         
-        let menuItem1 = MenuItem(itemID: 1, title: "Burger", description: "Delicious beef burger", image: "burger")
-        let menuItem2 = MenuItem(itemID: 2, title: "Pizza", description: "Freshly baked pizza with assorted toppings", image: "pizza")
-        let menuItem3 = MenuItem(itemID: 3, title: "Fried Chicken", description: "Crispy, flavorful fried chicken.", image: "chicken")
-        let menuItem4 = MenuItem(itemID: 4, title: "Sushi", description: "Exquisite sushi creations", image: "sushi")
+        let menuItem1 = MenuItem(itemID: 1, title: "Burger", itemDescription: "Delicious beef burger", image: "burger")
+        let menuItem2 = MenuItem(itemID: 2, title: "Pizza", itemDescription: "Freshly baked pizza with assorted toppings", image: "pizza")
+        let menuItem3 = MenuItem(itemID: 3, title: "Fried Chicken", itemDescription: "Crispy, flavorful fried chicken.", image: "chicken")
+        let menuItem4 = MenuItem(itemID: 4, title: "Sushi", itemDescription: "Exquisite sushi creations", image: "sushi")
         menuItems = [menuItem1, menuItem2, menuItem3, menuItem4]
         
        // self.tableView.dataSource = self
@@ -46,7 +46,7 @@ class MenuTableViewController: UITableViewController, ItemViewControllerDelegate
         let menuItem = menuItems[indexPath.row]
         
         cell.titleTextView?.text = menuItem.title
-        cell.descriptionTextView?.text = menuItem.description
+        cell.descriptionTextView?.text = menuItem.itemDescription
         cell.itemImageView?.image = UIImage(named: menuItem.image)
     
         return cell

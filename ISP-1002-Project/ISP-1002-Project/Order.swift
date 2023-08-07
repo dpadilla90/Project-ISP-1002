@@ -7,14 +7,19 @@
 
 import Foundation
 // Order class
-class Order {
+class Order: NSObject, NSCoding {
     var items: [OrderItem]
-    // Add other properties as needed, like orderDate, totalAmount, etc.
 
-    init(items: [OrderItem]=[]) {
+    init(items: [OrderItem] = []) {
         self.items = items
     }
-    
-    // You can also add methods to compute the total amount, add an item, etc.
-}
 
+    // Conform to NSCoding
+    required init?(coder aDecoder: NSCoder) {
+        items = aDecoder.decodeObject(forKey: "items") as! [OrderItem]
+    }
+
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(items, forKey: "items")
+    }
+}
