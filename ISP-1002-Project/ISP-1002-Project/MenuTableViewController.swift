@@ -21,7 +21,11 @@ class MenuTableViewController: UITableViewController, ItemViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         viewOrderButton.isHidden = true
-        
+        // Load the archived order if it exists
+        if let archivedOrder = Order.loadOrder() {
+            order = archivedOrder
+            viewOrderButton.isHidden = (order.items.isEmpty) ? true : false
+        }
         
         
         let menuItem1 = MenuItem(itemID: 1, title: "Burger", itemDescription: "Delicious beef burger", image: "burger")
@@ -30,9 +34,10 @@ class MenuTableViewController: UITableViewController, ItemViewControllerDelegate
         let menuItem4 = MenuItem(itemID: 4, title: "Sushi", itemDescription: "Exquisite sushi creations", image: "sushi")
         menuItems = [menuItem1, menuItem2, menuItem3, menuItem4]
         
-       // self.tableView.dataSource = self
-        //self.tableView.delegate = self
-
+       
+        // Add app lifecycle observers
+        NotificationCenter.default.addObserver(self, selector: #selector(appWillTerminate), name: UIApplication.willTerminateNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
     
     // MARK: - UITableViewDataSource
@@ -98,12 +103,21 @@ class MenuTableViewController: UITableViewController, ItemViewControllerDelegate
            }
     func itemViewController(_ controller: ItemViewController, didAddOrderItem orderItem: OrderItem) {
         order.items.append(orderItem)
+        order.saveOrder()
     }
+    @objc func appWillTerminate() {
+          order.saveOrder()
+      }
 
+      @objc func appDidEnterBackground() {
+          order.saveOrder()
+      }
+
+    
    
     @IBAction func unwindToMenuTableViewController(segue: UIStoryboardSegue) {
            // This is the unwind method that will be called when returning from ItemViewController.
-           // Any necessary actions after returning from ItemViewController can be placed here.
+        order.saveOrder()
        }
    
 

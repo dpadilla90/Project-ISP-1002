@@ -16,7 +16,7 @@ protocol ItemViewControllerDelegate: AnyObject {
 class ItemViewController: UIViewController {
   
     weak var delegate: ItemViewControllerDelegate?
-    var order: Order!
+ 
 
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var stepper: UIStepper!
@@ -34,9 +34,7 @@ class ItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if order == nil {
-               order = Order()  // initialize order
-           }
+      
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.isTranslucent = false
 
@@ -73,17 +71,8 @@ class ItemViewController: UIViewController {
       
         let orderItem = OrderItem(menuItem: menuItem, quantity: selectedQuantity, specialInstructions: specialInstructionsTextView.text)
         delegate?.itemViewController(self, didAddOrderItem: orderItem)
-        order?.items.append(orderItem)
         
-        // Check if the order was created successfully
-          if let lastOrder = order?.items.last {
-              print("Order Item added to order:")
-              print("Menu Item: \(lastOrder.menuItem.title)")
-              print("Quantity: \(lastOrder.quantity)")
-              print("Special Instructions: \(lastOrder.specialInstructions)")
-          } else {
-              print("Failed to add item to the order.")
-          }
+        
         
         // Inform the delegate (MenuTableViewController) that the addToOrderButton is tapped
             delegate?.addToOrderButtonTapped()

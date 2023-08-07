@@ -8,10 +8,7 @@ import UIKit
 
 class OrderTableViewController: UITableViewController {
     
-    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
-        self.tableView.isEditing = !self.tableView.isEditing
-        sender.title = (self.tableView.isEditing) ? "Done" : "Edit"
-    }
+ 
  
    
     var order: Order?
@@ -20,8 +17,13 @@ class OrderTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if order == nil {
+            order = Order()
+        }
+
         navigationItem.rightBarButtonItem = self.editButtonItem
         print("Order items count: \(order?.items.count ?? 0)")
+        
         
     }
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -55,10 +57,11 @@ class OrderTableViewController: UITableViewController {
             if editingStyle == .delete {
                 order?.items.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+        
+
             }
         }
     
-    // MARK: - Table view data source
     
 
     
