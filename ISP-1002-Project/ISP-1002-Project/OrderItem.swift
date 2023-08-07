@@ -8,8 +8,8 @@
 import Foundation
 // Define the OrderItem struct to represent an item in the order
 struct OrderItem {
-    let title: String
-    let quantity: Int
-    // Add more properties as needed for each item
+    var menuItem: MenuItem
+    var quantity: Int
+    var specialInstructions: String
 }
 

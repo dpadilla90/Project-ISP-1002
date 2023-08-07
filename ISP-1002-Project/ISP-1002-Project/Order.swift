@@ -7,21 +7,14 @@
 
 import Foundation
 // Order class
-class Order: Equatable {
-    let menuItem: MenuItem
-    var quantity: Int
-    var specialInstructions: String
-    
-    // Add an array property to hold the list of order items
-    var items: [OrderItem] = []
-    
-    init(menuItem: MenuItem, quantity: Int, specialInstructions: String) {
-        self.menuItem = menuItem
-        self.quantity = quantity
-        self.specialInstructions = specialInstructions
+class Order {
+    var items: [OrderItem]
+    // Add other properties as needed, like orderDate, totalAmount, etc.
+
+    init(items: [OrderItem]=[]) {
+        self.items = items
     }
     
-    static func == (lhs: Order, rhs: Order) -> Bool {
-        return lhs.menuItem.itemID == rhs.menuItem.itemID
-    }
+    // You can also add methods to compute the total amount, add an item, etc.
 }
+

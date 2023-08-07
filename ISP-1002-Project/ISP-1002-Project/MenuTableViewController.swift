@@ -13,8 +13,9 @@ class MenuTableViewController: UITableViewController, ItemViewControllerDelegate
     @IBOutlet weak var viewOrderButton: UIBarButtonItem!
     
     var menuItems: [MenuItem] = []
-    var orders = Orders.shared
-    var order: Order?
+
+    var order = Order()
+
 
     
     override func viewDidLoad() {
@@ -53,24 +54,21 @@ class MenuTableViewController: UITableViewController, ItemViewControllerDelegate
    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "ItemSegue", let indexPath = tableView.indexPathForSelectedRow {
-                let selectedItem = menuItems[indexPath.row]
-
-                if let destinationVC = segue.destination as? ItemViewController {
-                    destinationVC.selectedItem = selectedItem
-                    destinationVC.selectedItemTitle = selectedItem.title
-                    destinationVC.delegate = self
-                }
+            if segue.identifier == "ItemSegue",
+               let indexPath = tableView.indexPathForSelectedRow,
+               let destinationVC = segue.destination as? ItemViewController {
+                destinationVC.menuItem = menuItems[indexPath.row]
+                destinationVC.delegate = self 
             }
-            if segue.identifier == "ViewOrderSegue" {
-                if let orderTableViewController = segue.destination as? OrderTableViewController {
-                    orderTableViewController.order = orders.orderList.last
-                    orderTableViewController.orders = orders.orderList
-                }
-            }
+        // Check if it's the segue to OrderTableViewController
+           else if segue.identifier == "ViewOrderSegue",
+                   let destinationVC = segue.destination as? OrderTableViewController {
+                   destinationVC.order = self.order
+           }
         }
         
-     
+   
+
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -98,6 +96,10 @@ class MenuTableViewController: UITableViewController, ItemViewControllerDelegate
     func addToOrderButtonTapped() {
         viewOrderButton.isHidden = false
            }
+    func itemViewController(_ controller: ItemViewController, didAddOrderItem orderItem: OrderItem) {
+        order.items.append(orderItem)
+    }
+
    
     @IBAction func unwindToMenuTableViewController(segue: UIStoryboardSegue) {
            // This is the unwind method that will be called when returning from ItemViewController.
