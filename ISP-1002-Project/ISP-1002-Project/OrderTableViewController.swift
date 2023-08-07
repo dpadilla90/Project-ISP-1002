@@ -7,6 +7,13 @@
 import UIKit
 
 class OrderTableViewController: UITableViewController {
+    
+    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
+        self.tableView.isEditing = !self.tableView.isEditing
+        sender.title = (self.tableView.isEditing) ? "Done" : "Edit"
+    }
+ 
+    
     var order: Order?
 
 

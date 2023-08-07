@@ -72,7 +72,13 @@
                             <outlet property="delegate" destination="ebi-0F-fpE" id="poQ-6M-t2N"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Gub-Jz-7q9"/>
+                    <navigationItem key="navigationItem" id="Gub-Jz-7q9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Eok-A0-joE">
+                            <connections>
+                                <action selector="editButtonTapped:" destination="ebi-0F-fpE" id="wAk-aU-1h1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aHy-Lu-NRF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
