@@ -37,7 +37,7 @@ class OrderTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
         // Print the number of items in the current order for debugging purposes
         print("Order items count: \(order?.items.count ?? 0)")
-        amountLabel.text = "$\((order?.items.count ?? 0) * 10)"
+        amountLabel.text = "1"
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -45,6 +45,7 @@ class OrderTableViewController: UIViewController, UITableViewDelegate, UITableVi
         tableview.reloadData()
         
     }
+    
     
     // Customizing the edit button's title
     override func setEditing(_ editing: Bool, animated: Bool) {
