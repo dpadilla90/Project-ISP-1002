@@ -13,6 +13,7 @@ import UIKit
  */
 class OrderTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var tableview: UITableView!
     
     // MARK: - Properties
@@ -36,6 +37,7 @@ class OrderTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
         // Print the number of items in the current order for debugging purposes
         print("Order items count: \(order?.items.count ?? 0)")
+        amountLabel.text = "$\((order?.items.count ?? 0) * 10)"
     }
     
     override func viewDidAppear(_ animated: Bool) {
