@@ -110,7 +110,9 @@
                             <constraint firstItem="D03-Bl-G05" firstAttribute="bottom" secondItem="lZw-82-duA" secondAttribute="bottom" constant="135" id="ze8-GW-Rdh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="75J-FV-xhD"/>
+                    <navigationItem key="navigationItem" id="aBd-Dg-P98">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="QVn-3Q-iEF"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="amountLabel" destination="aRb-NG-XYO" id="5dH-Zi-z8q"/>
                         <outlet property="tableview" destination="lZw-82-duA" id="oua-5R-IN1"/>

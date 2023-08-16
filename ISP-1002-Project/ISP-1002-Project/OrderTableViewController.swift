@@ -53,7 +53,9 @@ class OrderTableViewController: UIViewController, UITableViewDelegate, UITableVi
         
         if editing {
             self.editButtonItem.title = "Done"
+            tableview.isEditing = true
         } else {
+            tableview.isEditing = false
             self.editButtonItem.title = "Edit"
         }
     }
