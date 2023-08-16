@@ -11,7 +11,10 @@ import UIKit
  This class provides functionality for viewing items in an order, optionally editing the order
  (e.g., removing items), and visualizing order details.
  */
-class OrderTableViewController: UITableViewController {
+class OrderTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var tableview: UITableView!
     
     // MARK: - Properties
 
@@ -22,7 +25,8 @@ class OrderTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableview.dataSource = self
+        tableview.delegate = self
         // If the order is nil, initialize a new empty order
         if order == nil {
             order = Order()
@@ -33,7 +37,15 @@ class OrderTableViewController: UITableViewController {
 
         // Print the number of items in the current order for debugging purposes
         print("Order items count: \(order?.items.count ?? 0)")
+        amountLabel.text = "1"
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableview.reloadData()
+        
+    }
+    
     
     // Customizing the edit button's title
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -41,19 +53,21 @@ class OrderTableViewController: UITableViewController {
         
         if editing {
             self.editButtonItem.title = "Done"
+            tableview.isEditing = true
         } else {
+            tableview.isEditing = false
             self.editButtonItem.title = "Edit"
         }
     }
 
     // MARK: - UITableViewDataSource methods
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of items in the order
         return order?.items.count ?? 0
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Dequeue an order item cell and populate its labels with the relevant order item data
         let cell = tableView.dequeueReusableCell(withIdentifier: "OrderItemCell", for: indexPath) as! OrderItemCell
         if let orderItem = order?.items[indexPath.row] {
@@ -64,7 +78,7 @@ class OrderTableViewController: UITableViewController {
     }
     
     // Allow deletion of order items, updating both the data source and the UI
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             order?.items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -72,7 +86,7 @@ class OrderTableViewController: UITableViewController {
     }
     
     // Provide a title for the header section of the table view
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Order Details"
     }
 }

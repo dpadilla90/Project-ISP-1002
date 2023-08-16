@@ -78,9 +78,10 @@ class MenuTableViewController: UITableViewController, ItemViewControllerDelegate
            let destinationVC = segue.destination as? ItemViewController {
             destinationVC.menuItem = menuItems[indexPath.row]
             destinationVC.delegate = self
-        } else if segue.identifier == "ViewOrderSegue",
-                  let destinationVC = segue.destination as? OrderTableViewController {
-            destinationVC.order = self.order
+        } else {
+            if let destinationVC = segue.destination as? OrderTableViewController {
+                destinationVC.order = self.order
+            }
         }
     }
     
